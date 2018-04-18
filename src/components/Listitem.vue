@@ -30,16 +30,17 @@ export default {
 
 <style lang="css">
 .itemcont {
-  margin: 10PX;
-  height: 300px;
-  width: 220px;
+  margin: 0 ;
+  height: 560px;
+  width: 280px;
   border: 1px solid #F8F8F8;
+  margin-right: 10px;
 }
 
 .ipicture {
-  height: 200px;
-  width: 200px;
-  margin: 0 10px;
+  height: 380px;
+  width: 280px;
+  margin: 0;
 }
 
 .ipicture img {

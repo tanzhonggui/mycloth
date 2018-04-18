@@ -1,7 +1,7 @@
 <template>
 <div class="selects">
   <div class="logo">
-    <img src="../../static/images/defate.jpg" alt="">
+    <img src="../../static/images/logo.png" alt="">
   </div>
   <div class="s-select">
     <input type="text" name="" value="" placeholder="搜索">
@@ -33,10 +33,12 @@ export default {
 
 <style lang="css">
 .selects {
-  width: 100%;
-  background-color: #B3C0D1;
+  width: 90%;
+  padding-left:5%;
+  padding-right: 5%;
+  background-color: #ffffff;
   color: #333;
-  height: 60px;
+  height: 100px;
   line-height: 60px;
 }
 
@@ -50,10 +52,9 @@ export default {
 }
 
 .logo {
-  width: 120px;
-  height: 60px;
+  width: 250px;
+  height: 100px;
   float: left;
-  margin-left: 15%;
   margin-right: 15%;
 }
 .s-select {
