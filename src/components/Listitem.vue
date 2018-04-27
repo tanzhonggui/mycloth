@@ -8,6 +8,7 @@
    </div>
    <div class="iprice">
        <span>¥</span><span>{{iprice}}</span>
+       <span style="font-size:10px;color:#111">库存<span style="color：#c30">111</span>件</span>
    </div>
   </div>
 </template>

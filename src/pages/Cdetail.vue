@@ -11,7 +11,7 @@
           <p class="p-subtitle">{{product.subtitle}}描述</p>
           <div class="p-info-item p-price-con">
             <span class="label">价格:</span>
-            <span class="info">￥ {{product.price | formatMoney}}</span>
+            <span class="info">￥ {{product.price}}</span>
           </div>
           <div class="p-info-item">
             <span class="label">库存:</span>

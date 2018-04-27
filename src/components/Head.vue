@@ -5,7 +5,42 @@
      <div class="location">
         <!-- <Areaselect :location='value'></Areaselect> -->
      </div>
-     <div class="tips">{{userId}}</div>
+     <div class="tips"><el-button type="text" @click="dialogVisible = true">登录</el-button></div>
+<el-dialog
+  title="登录"
+  :visible.sync="dialogVisible"
+  width="30%"
+  :before-close="handleClose">
+<el-row class="demo-autocomplete">
+  <el-col :span="12">
+    <div class="sub-title">输入账号</div>
+    <el-autocomplete
+      class="inline-input"
+      v-model="state1"
+      :fetch-suggestions="querySearch"
+      placeholder="请输入账号"
+      :trigger-on-focus="false"
+      @select="handleSelect"
+    ></el-autocomplete>
+  </el-col></el-row>
+<el-row class="demo-autocomplete">
+  <el-col :span="12">
+    <div class="sub-title">输入密码</div>
+    <el-autocomplete
+      class="inline-input"
+      v-model="state2"
+      :fetch-suggestions="querySearch"
+      placeholder="请输入密码"
+      :trigger-on-focus="false"
+      @select="handleSelect"
+    ></el-autocomplete>
+  </el-col>
+</el-row>
+  <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  </span>
+</el-dialog>
      <div class="tips">消息</div>
      <div class="tips" ><a @click='gocart'>购物车</a></div>
      <div class="tips">收藏的宝贝</div>
@@ -34,7 +69,11 @@ export default {
     return{
       loginState: 0,
       userId: "大壮",
-      location: "北京"
+      location: "北京",
+      restaurants: [],
+      state1: '',
+      state2: '',
+      dialogVisible: false
     };
   },
 
@@ -48,8 +87,35 @@ export default {
      },
      gohome(){
        this.$emit('gohome');
-     }
-  }
+     },
+     handleClose(done) {
+        this.$confirm('确认关闭？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+      },
+     querySearch(queryString, cb) {
+        var restaurants = this.restaurants;
+        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+        // 调用 callback 返回建议列表的数据
+        cb(results);
+      },
+      createFilter(queryString) {
+        return (restaurant) => {
+          return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+        };
+      },
+      loadAll() {
+        return [];
+      },
+      handleSelect(item) {
+        console.log(item);
+      }
+  },
+  mounted() {
+      this.restaurants = this.loadAll();
+    }
 }
 </script>
 
